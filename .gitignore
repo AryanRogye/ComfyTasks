@@ -1,4 +1,3 @@
-
 # dependencies
 ComfyTasks/node_modules/
 
@@ -19,18 +18,28 @@ ComfyTasks/web-build/
 ComfyTasks/.metro-health-check*
 
 # debug
-npm-debug.*
-yarn-debug.*
-yarn-error.*
+ComfyTasks/npm-debug.*
+ComfyTasks/yarn-debug.*
+ComfyTasks/yarn-error.*
 
 # macOS
-.DS_Store
-*.pem
+ComfyTasks/.DS_Store
+ComfyTasks/*.pem
 
 # local env files
-.env*.local
-
-.env*
+ComfyTasks/.env*
+ComfyTasks/.env*.local
 
 # typescript
 ComfyTasks/*.tsbuildinfo
+ComfyTasks/*.d.ts
+
+# iOS build files inside ComfyTasks
+ComfyTasks/ios/build/
+
+# Android build (if added later)
+ComfyTasks/android/build/
+
+# Watchman config (if applicable)
+ComfyTasks/.watchmanconfig
+ComfyTasks/.expo-shared/
