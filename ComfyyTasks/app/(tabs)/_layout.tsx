@@ -5,6 +5,7 @@ import Animated, { useSharedValue, withSpring, useAnimatedStyle, withTiming } fr
 import { useEffect, useState } from 'react';
 import { Dimensions } from 'react-native';
 import { TaskModal } from '@/components/task_modal';
+import { EventModal } from '@/components/event_modal';
 
 const TabsLayout = () => {
     // Plan is there is 2 circles, one is for creating a event and the other is for creating a task
@@ -38,7 +39,7 @@ const TabsLayout = () => {
     const [eventPressed, setEventPressed] = useState(false);
 
     const handleEventPress = () => {
-
+        setEventPressed(true);
     }
 
     const handleTaskPress = () => {
@@ -164,6 +165,10 @@ const TabsLayout = () => {
             <TaskModal
                 visible={taskPressed}
                 setVisible={setTaskPressed}
+            />
+            <EventModal
+                visible={eventPressed}
+                setVisible={setEventPressed}
             />
         </>
     );
