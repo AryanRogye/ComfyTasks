@@ -1,13 +1,13 @@
 # dependencies
-ComfyTasks/node_modules/
+ComfyyTasks/node_modules/
 
 # Expo
-ComfyTasks/.expo/
-ComfyTasks/dist/
-ComfyTasks/web-build/
+ComfyyTasks/.expo/
+ComfyyTasks/dist/
+ComfyyTasks/web-build/
 
 # EAS
-ComfyTasks/eas.json
+ComfyyTasks/eas.json
 
 # Native
 *.orig.*
@@ -18,31 +18,31 @@ ComfyTasks/eas.json
 *.mobileprovision
 
 # Metro
-ComfyTasks/.metro-health-check*
+ComfyyTasks/.metro-health-check*
 
 # debug
-ComfyTasks/npm-debug.*
-ComfyTasks/yarn-debug.*
-ComfyTasks/yarn-error.*
+ComfyyTasks/npm-debug.*
+ComfyyTasks/yarn-debug.*
+ComfyyTasks/yarn-error.*
 
 # macOS
-ComfyTasks/.DS_Store
-ComfyTasks/*.pem
+ComfyyTasks/.DS_Store
+ComfyyTasks/*.pem
 
 # local env files
-ComfyTasks/.env*
-ComfyTasks/.env*.local
+ComfyyTasks/.env*
+ComfyyTasks/.env*.local
 
 # typescript
-ComfyTasks/*.tsbuildinfo
-ComfyTasks/*.d.ts
+ComfyyTasks/*.tsbuildinfo
+ComfyyTasks/*.d.ts
 
-# iOS build files inside ComfyTasks
-ComfyTasks/ios/build/
+# iOS build files inside ComfyyTasks
+ComfyyTasks/ios/build/
 
 # Android build (if added later)
-ComfyTasks/android/build/
+ComfyyTasks/android/build/
 
 # Watchman config (if applicable)
-ComfyTasks/.watchmanconfig
-ComfyTasks/.expo-shared/
+ComfyyTasks/.watchmanconfig
+ComfyyTasks/.expo-shared/
