@@ -6,6 +6,9 @@ ComfyTasks/.expo/
 ComfyTasks/dist/
 ComfyTasks/web-build/
 
+# EAS
+ComfyTasks/eas.json
+
 # Native
 *.orig.*
 *.jks

@@ -2,15 +2,11 @@ import React from 'react';
 import {SafeAreaView, Text, View, StyleSheet } from 'react-native';
 import { RenderWeekCalendar } from '@/components/render_week_cal';
 
-export default function Home({}) {
-
-
-
-
+export default function Home({props}: any) {
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.title}>
-                <Text style={styles.titleText}>Mange Tasks</Text>
+                <Text style={styles.titleText}>Manage Tasks✏</Text>
             </View>
             <View style={styles.calRow}>
             <RenderWeekCalendar/>
