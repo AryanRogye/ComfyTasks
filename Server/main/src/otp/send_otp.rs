@@ -1,16 +1,23 @@
 use serde_json::json;
+use serde::Deserialize;
 use reqwest::{self, Client};
-use actix_web::{get, Responder, HttpResponse};
+use actix_web::{web, post, Responder, HttpResponse};
 use std::error::Error;
 
 // For reading .env file
 use std::env;
 use dotenv::dotenv;
 
+#[derive(Deserialize)]
+struct OTP {
+    phone : String,
+}
 
-async fn api_req(link : String, code : String) -> Result<reqwest::Response, Box<dyn Error>> {
+
+async fn api_req(link : String, code : String, phone : String) -> Result<reqwest::Response, Box<dyn Error>> {
     let client = Client::new();
     let params = json!({
+        "phone" : phone,
         "code" : code
     });
     let response = client
@@ -22,8 +29,8 @@ async fn api_req(link : String, code : String) -> Result<reqwest::Response, Box<
     Ok(response)
 }
 
-#[get("/send_otp")]
-pub async fn send_otp() -> impl Responder {
+#[post("/send_otp")]
+pub async fn send_otp(query: web::Json<OTP>) -> impl Responder {
 
     dotenv().ok();  // This loads the .env file
 
@@ -34,7 +41,13 @@ pub async fn send_otp() -> impl Responder {
     }
     // Code that will be sent as a link
     let code : String = "000000".to_string();
-    let req: reqwest::Response = api_req(req_link, code).await.expect("Error");  // Then make the request
+
+    // Phone number to send the OTP to
+    let phone = query.phone.clone();
+
+    println!("Phone: {}", phone);
+
+    let req: reqwest::Response = api_req(req_link, code, phone).await.expect("Error");  // Then make the request
     let req_text = req.text().await.expect("Error reading response text");
     println!("Response: {}", req_text);
 

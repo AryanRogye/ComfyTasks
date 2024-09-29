@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Dimensions } from "react-native";
-import { Axios } from "axios";
+import Axios from "axios";
+import { API_OTP_URL } from "@/components/API";
 
 
 export default function Phone() {
@@ -14,7 +15,13 @@ export default function Phone() {
             alert('Please enter a valid phone number');
             return;
         }
-        // Make the api request to the rust server
+        try {
+            console.log(API_OTP_URL);
+            const response = await Axios.post(API_OTP_URL, { phone: phone });
+            console.log(response.data);
+        } catch (e : any) {
+            Alert.alert('Error:\n', e.message);
+        }
     }
 
     return (
