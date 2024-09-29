@@ -40,6 +40,7 @@ Server/main/.env*.local
 # For golang
 Server/otp/.env*
 Server/otp/.env*.local
+Server/otp/main.go
 
 # typescript
 ComfyyTasks/*.tsbuildinfo
