@@ -4,7 +4,7 @@ import { Redirect } from 'expo-router';
 import { useAuthHook } from './hooks/auth_hook';
 
 export default function Index() {
-  const [status, setStatus] = useState<boolean | null>(true); // Use `null` as an initial value
+  const [status, setStatus] = useState<boolean | null>(false); // Use `null` as an initial value
 
 
   if (status === null) {

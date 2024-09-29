@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export const useAuthHook = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const login = (response: boolean) => {
     setIsLoggedIn(response);

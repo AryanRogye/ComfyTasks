@@ -33,6 +33,14 @@ ComfyyTasks/*.pem
 ComfyyTasks/.env*
 ComfyyTasks/.env*.local
 
+# For rust
+Server/main/.env*
+Server/main/.env*.local
+
+# For golang
+Server/otp/.env*
+Server/otp/.env*.local
+
 # typescript
 ComfyyTasks/*.tsbuildinfo
 ComfyyTasks/*.d.ts

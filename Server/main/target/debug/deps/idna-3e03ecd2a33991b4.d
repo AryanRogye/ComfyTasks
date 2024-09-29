@@ -1,0 +1,10 @@
+/Users/aryanrogye/Documents/CODE/LearningAndPractice/react-native-content/ai_app/Server/main/target/debug/deps/libidna-3e03ecd2a33991b4.rmeta: /Users/aryanrogye/.cargo/registry/src/index.crates.io-6f17d22bba15001f/idna-0.5.0/src/lib.rs /Users/aryanrogye/.cargo/registry/src/index.crates.io-6f17d22bba15001f/idna-0.5.0/src/punycode.rs /Users/aryanrogye/.cargo/registry/src/index.crates.io-6f17d22bba15001f/idna-0.5.0/src/uts46.rs /Users/aryanrogye/.cargo/registry/src/index.crates.io-6f17d22bba15001f/idna-0.5.0/src/uts46_mapping_table.rs
+
+/Users/aryanrogye/Documents/CODE/LearningAndPractice/react-native-content/ai_app/Server/main/target/debug/deps/libidna-3e03ecd2a33991b4.rlib: /Users/aryanrogye/.cargo/registry/src/index.crates.io-6f17d22bba15001f/idna-0.5.0/src/lib.rs /Users/aryanrogye/.cargo/registry/src/index.crates.io-6f17d22bba15001f/idna-0.5.0/src/punycode.rs /Users/aryanrogye/.cargo/registry/src/index.crates.io-6f17d22bba15001f/idna-0.5.0/src/uts46.rs /Users/aryanrogye/.cargo/registry/src/index.crates.io-6f17d22bba15001f/idna-0.5.0/src/uts46_mapping_table.rs
+
+/Users/aryanrogye/Documents/CODE/LearningAndPractice/react-native-content/ai_app/Server/main/target/debug/deps/idna-3e03ecd2a33991b4.d: /Users/aryanrogye/.cargo/registry/src/index.crates.io-6f17d22bba15001f/idna-0.5.0/src/lib.rs /Users/aryanrogye/.cargo/registry/src/index.crates.io-6f17d22bba15001f/idna-0.5.0/src/punycode.rs /Users/aryanrogye/.cargo/registry/src/index.crates.io-6f17d22bba15001f/idna-0.5.0/src/uts46.rs /Users/aryanrogye/.cargo/registry/src/index.crates.io-6f17d22bba15001f/idna-0.5.0/src/uts46_mapping_table.rs
+
+/Users/aryanrogye/.cargo/registry/src/index.crates.io-6f17d22bba15001f/idna-0.5.0/src/lib.rs:
+/Users/aryanrogye/.cargo/registry/src/index.crates.io-6f17d22bba15001f/idna-0.5.0/src/punycode.rs:
+/Users/aryanrogye/.cargo/registry/src/index.crates.io-6f17d22bba15001f/idna-0.5.0/src/uts46.rs:
+/Users/aryanrogye/.cargo/registry/src/index.crates.io-6f17d22bba15001f/idna-0.5.0/src/uts46_mapping_table.rs:

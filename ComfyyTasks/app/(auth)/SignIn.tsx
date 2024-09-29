@@ -1,8 +1,9 @@
 import React from "react";
 import { SafeAreaView, View, Text, TextInput, TouchableOpacity, Button, StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
+import { Alert } from "react-native";
 import { useAuthHook } from "../hooks/auth_hook";
-// import { API_PORT, API_IP } from '@env';
+import { Ionicons } from "@expo/vector-icons";
 
 export default function SignIn({ props }: any) {
 
@@ -19,18 +20,21 @@ export default function SignIn({ props }: any) {
             return;
         }
         // ENV Variables
-        const API_PORT = process.env.API_PORT;
-        const API_IP = process.env.API_IP;
+        const API_PORT = process.env.EXPO_PUBLIC_PORT;
+        const API_IP = process.env.EXPO_PUBLIC_IP;
         // Rust Backend API
-        const response = await fetch(`http://${API_IP}:${API_PORT}/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, password }),
-        })
-        // Now we have Response
-        const { isLoggedIn, login } = useAuthHook();
+        try {
+            console.log(`http://${API_IP}:${API_PORT}/phone_number_sign_in`);
+            const response = await fetch(`http://${API_IP}:${API_PORT}/phone_number_sign_in`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            })
+        } catch (e : any) {
+            Alert.alert('Error:\n', e.message);
+        }
     }
     const handleSignUp = async () => { }
     const handleForgotPw = async () => { }
@@ -38,7 +42,7 @@ export default function SignIn({ props }: any) {
 
     return (
         <SafeAreaView style={styles.background}>
-            <View style={{ height: 150 }} />
+            <View style={{ height: 130 }} />
             <TextInput
                 value={email}
                 onChangeText={setEmail}
@@ -79,6 +83,18 @@ export default function SignIn({ props }: any) {
                     {" Dont Worry"}
                 </Text>
             </View>
+            {/* Continue With */}
+            <View style={styles.continue}>
+                <Text style={styles.continueText}> ------ Or Continue With ------</Text>
+            </View>
+            <View style={styles.circleIcons}>
+                <View style={styles.phoneCircle}>
+                    <Ionicons name="call" style={styles.phoneIcon}/>
+                </View>
+                <View style={styles.googleCircle}>
+                    <Ionicons name="logo-google" style={styles.phoneIcon}/>
+                </View>
+            </View>
         </SafeAreaView>
     )
 }
@@ -90,12 +106,39 @@ const linkColor = "#0079c7"
 const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
+    phoneIcon: {
+        fontSize: 45,
+        color: 'black',
+        textAlign: 'center',
+        marginTop: 5,
+    },
+    phoneCircle: {
+        backgroundColor: 'green',
+        width: 55,
+        height: 55,
+        borderWidth: 1,
+        borderRadius: 50,
+        marginRight: 20,
+    },
+    googleCircle: {
+        backgroundColor: 'lightblue',
+        width: 55,
+        height: 55,
+        borderWidth: 1,
+        borderRadius: 50,
+        marginLeft: 20,
+    },
+    circleIcons: {
+        marginTop: 20,
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
     background: {
         backgroundColor: backgroundColor,
         flex: 1,
     },
     login: {
-        height: 50,
+        height: 60,
         borderWidth: 1,
         borderRadius: 10,
         marginLeft: 20,
@@ -107,7 +150,7 @@ const styles = StyleSheet.create({
     },
     loginButton: {
         backgroundColor: '#0099ff',
-        height: 50,
+        height: 70,
         borderWidth: 1,
         borderRadius: 10,
         marginLeft: 20,
@@ -119,12 +162,14 @@ const styles = StyleSheet.create({
     },
     loginText: {
         textAlign: 'center',
-        fontSize: 30,
+        fontSize: 25,
         fontWeight: '400',
     },
     signUpBox: {
         marginLeft: 20,
         marginRight: 20,
+        flexDirection: 'row',
+        justifyContent: 'center',
     },
     signUpRest: {
         color: itemColor,
@@ -140,10 +185,10 @@ const styles = StyleSheet.create({
     },
     forgotPwBox: {
         flexDirection: 'row',
+        justifyContent: 'center',
     },
     forgotPw: {
         marginLeft: 20,
-        marginTop: 10,
     },
     forgotPwText: {
         color: linkColor,
@@ -152,9 +197,17 @@ const styles = StyleSheet.create({
     },
     forgotPwRest: {
         color: itemColor,
-        marginTop: 10,
         fontSize: 15,
         fontWeight: '600',
         marginLeft: 2
+    },
+    continue: {
+        marginTop: 20,
+    },
+    continueText: {
+        color: itemColor,
+        fontSize: 20,
+        fontWeight: 'bold',
+        textAlign: 'center'
     },
 })
