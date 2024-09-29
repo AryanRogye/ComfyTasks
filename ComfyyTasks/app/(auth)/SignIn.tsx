@@ -5,12 +5,16 @@ import { Alert } from "react-native";
 import { useAuthHook } from "../hooks/auth_hook";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import axios from "axios";
+import { API_SIGN_IN_URL } from "@/components/API";
 
 export default function SignIn({ props }: any) {
     const router = useRouter();
 
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [first_name, setFirstName] = React.useState('');
+    const [last_name, setLastName] = React.useState('');
 
     const width = Dimensions.get('window').width;
     const height = Dimensions.get('window').height;
@@ -21,22 +25,18 @@ export default function SignIn({ props }: any) {
             alert('Please enter your email and password');
             return;
         }
-        // ENV Variables
-        const API_PORT = process.env.EXPO_PUBLIC_PORT;
-        const API_IP = process.env.EXPO_PUBLIC_IP;
-        // Rust Backend API
         try {
-            console.log(`http://${API_IP}:${API_PORT}/phone_number_sign_in`);
-            const response = await fetch(`http://${API_IP}:${API_PORT}/phone_number_sign_in`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
+            const response = await axios.post(API_SIGN_IN_URL, {
+                "first_name"    : first_name,
+                "last_name"     : last_name,
+                "email"         : email,
+                "password"      : password
             })
+            console.log(response.data);
         } catch (e : any) {
             Alert.alert('Error:\n', e.message);
         }
+
     }
     const handleSignUp = async () => { }
     const handleForgotPw = async () => { }
@@ -47,7 +47,24 @@ export default function SignIn({ props }: any) {
 
     return (
         <SafeAreaView style={styles.background}>
-            <View style={{ height: 130 }} />
+            <View style={{ height: 100 }} />
+            <View style={styles.namesRow}>
+                <TextInput
+                    value={first_name}
+                    onChangeText={setFirstName}
+                    placeholder="First Name"
+                    placeholderTextColor="#666666"
+                    style={styles.first_name}
+                />
+                <TextInput
+                    value={last_name}
+                    onChangeText={setLastName}
+                    placeholder="Last Name"
+                    placeholderTextColor="#666666"
+                    style={styles.last_name}
+                />
+            </View>
+            <View style={{ height: 20 }} />
             <TextInput
                 value={email}
                 onChangeText={setEmail}
@@ -216,5 +233,32 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center'
+    },
+    namesRow: {
+        flexDirection: 'row',
+    },
+    first_name: {
+        height: 60,
+        borderWidth: 1,
+        borderRadius: 10,
+        marginLeft: 20,
+        marginRight: 20,
+        paddingLeft: 10,
+        fontSize: 20,
+        color: itemColor,
+        fontWeight: 'bold',
+        flex: 1,
+    },
+    last_name: {
+        height: 60,
+        borderWidth: 1,
+        borderRadius: 10,
+        marginLeft: 20,
+        marginRight: 20,
+        paddingLeft: 10,
+        fontSize: 20,
+        color: itemColor,
+        fontWeight: 'bold',
+        flex: 1,
     },
 })

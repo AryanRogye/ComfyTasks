@@ -2,6 +2,12 @@
 mod otp;
 use crate::otp::send_otp::send_otp;
 
+mod auth;
+use crate::auth::sign_in::sign_in;
+
+mod models;
+mod database;
+
 use actix_web::{App, HttpServer};
 
 
@@ -15,6 +21,7 @@ async fn main() -> std::io::Result<()> {
 
     HttpServer::new(move || {
         App::new()
+            .service(sign_in)
             .service(send_otp)
     })
     // Link is http://localhost:8080
