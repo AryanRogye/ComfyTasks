@@ -4,8 +4,10 @@ import { Dimensions } from "react-native";
 import { Alert } from "react-native";
 import { useAuthHook } from "../hooks/auth_hook";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 export default function SignIn({ props }: any) {
+    const router = useRouter();
 
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -38,6 +40,9 @@ export default function SignIn({ props }: any) {
     }
     const handleSignUp = async () => { }
     const handleForgotPw = async () => { }
+	const phonePress = () => {
+        router.push('/(auth)/Phone');
+	}
 
 
     return (
@@ -88,9 +93,11 @@ export default function SignIn({ props }: any) {
                 <Text style={styles.continueText}> ------ Or Continue With ------</Text>
             </View>
             <View style={styles.circleIcons}>
-                <View style={styles.phoneCircle}>
-                    <Ionicons name="call" style={styles.phoneIcon}/>
-                </View>
+				<TouchableOpacity onPress={() => phonePress()}>
+                	<View style={styles.phoneCircle}>
+                    	<Ionicons name="call" style={styles.phoneIcon}/>
+               		</View>
+				</TouchableOpacity>
                 <View style={styles.googleCircle}>
                     <Ionicons name="logo-google" style={styles.phoneIcon}/>
                 </View>

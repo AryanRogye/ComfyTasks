@@ -6,6 +6,9 @@ ComfyyTasks/.expo/
 ComfyyTasks/dist/
 ComfyyTasks/web-build/
 
+#Secret API links
+ComfyyTasks/components/API.tsx
+
 # EAS
 ComfyyTasks/eas.json
 
@@ -36,6 +39,8 @@ ComfyyTasks/.env*.local
 # For rust
 Server/main/.env*
 Server/main/.env*.local
+
+Server/main/target/
 
 # For golang
 Server/otp/.env*
