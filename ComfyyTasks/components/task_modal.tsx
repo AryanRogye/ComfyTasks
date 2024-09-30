@@ -1,4 +1,5 @@
 
+import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { View, SafeAreaView, Text, StyleSheet, Modal, Button } from "react-native";
 import { Dimensions } from "react-native";
@@ -20,6 +21,10 @@ export const TaskModal: React.FC<TaskModalProps> = ({
         >
             <SafeAreaView style={styles.modalBackground}>
                 <View style={styles.modalContainer}>
+                    <View style={styles.title}>
+                        <Text style={styles.titleText}> Add A Task </Text>
+                        <Ionicons name="information-circle-outline" size={20}/>
+                    </View>
                     <Button title="close" onPress={() => setVisible(false)}/>
                 </View>
             </SafeAreaView>
@@ -31,8 +36,6 @@ const screenHeight = Dimensions.get('screen').height;
 const styles = StyleSheet.create({
     modalBackground: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
     },
     modalContainer: {
         width: '100%', // Set width to 80% of the screen
@@ -40,7 +43,16 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 10,
         padding: 20,
+    },
+    title: {
+        flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'center',
+    },
+    titleText: {
+        color: 'black',
+        fontSize: 20,
+        fontWeight: '300',
+        fontFamily: 'Roboto',
+        textAlign: 'center',
     }
 });

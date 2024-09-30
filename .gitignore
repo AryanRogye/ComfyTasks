@@ -8,6 +8,8 @@ ComfyyTasks/.expo/
 ComfyyTasks/dist/
 ComfyyTasks/web-build/
 
+ComfyyTasks/ios/build/
+
 #Secret API links
 ComfyyTasks/components/API.tsx
 
