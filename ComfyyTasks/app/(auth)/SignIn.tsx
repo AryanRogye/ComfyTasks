@@ -22,6 +22,7 @@ export default function SignIn({ props }: any) {
     const height = Dimensions.get('window').height;
 
     const handleSignIn = async () => {
+        console.log("Sign In Pressed");
         // Validate email and password
         if (email.length === 0 || password.length === 0) {
             alert('Please enter your email and password');
