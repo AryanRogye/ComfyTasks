@@ -7,6 +7,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import axios from "axios";
 import { API_SIGN_IN_URL } from "@/components/API";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+// import AsyncStorage
 
 export default function SignIn({ props }: any) {
     const router = useRouter();
@@ -33,6 +35,13 @@ export default function SignIn({ props }: any) {
                 "password"      : password
             })
             console.log(response.data);
+            if (response.data.status === 'Success') {
+                // Update authentication status
+                await AsyncStorage.setItem('isSignedIn', 'true');
+                router.push('/(tabs)/Home'); // Navigate to home
+            } else {
+                alert('Sign in failed');
+            }
         } catch (e : any) {
             Alert.alert('Error:\n', e.message);
         }

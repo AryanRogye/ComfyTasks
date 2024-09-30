@@ -1,12 +1,22 @@
-import { useState } from "react";
+// hooks/auth_hook.ts
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useState, useEffect } from 'react';
 
 export const useAuthHook = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [status, setStatus] = useState<boolean | null>(null);
 
-  const login = (response: boolean) => {
-    setIsLoggedIn(response);
-    return response;
-  };
+    useEffect(() => {
+        const checkAuthStatus = async () => {
+            const isSignedIn = await AsyncStorage.getItem('isSignedIn');
+            setStatus(isSignedIn === 'true');
+        };
+        checkAuthStatus();
+    }, []);
 
-  return { isLoggedIn, login };
+    const setSignedIn = async (signedIn: boolean) => {
+        await AsyncStorage.setItem('isSignedIn', signedIn.toString());
+        setStatus(signedIn);
+    };
+
+    return { status, setSignedIn };
 };

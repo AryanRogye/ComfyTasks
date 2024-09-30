@@ -4,12 +4,11 @@ import { Redirect } from 'expo-router';
 import { useAuthHook } from './hooks/auth_hook';
 
 export default function Index() {
-  const [status, setStatus] = useState<boolean | null>(false); // Use `null` as an initial value
-
+  const { status } = useAuthHook(); // Retrieve the auth status
 
   if (status === null) {
-    // You can add a loading spinner here while checking the authentication state
-    return null; // or a loading component like <LoadingScreen />
+    // Display a loading screen or spinner here
+    return null;
   }
 
   // Redirect based on the signedIn state
